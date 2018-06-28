@@ -1,0 +1,29 @@
+{
+  "name": "currency_converter",
+  "version": "1.0.0",
+  "description": "A final project to create currency converter app that can work both online and offline using sevice worker,cache api and indexed db",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/achiengcindy/currency_converter.git"
+  },
+  "keywords": [
+    "service-worker",
+    "indexed-db",
+    "cacheapi",
+    "fetcgapi"
+  ],
+  "author": "Cindy Achieng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/achiengcindy/currency_converter/issues"
+  },
+  "homepage": "https://github.com/achiengcindy/currency_converter#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

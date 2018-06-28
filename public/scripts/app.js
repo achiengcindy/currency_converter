@@ -23,14 +23,3 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
     });
 });
 
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-    .register('/sw.js')
-    .then(function(reg) {
-        console.log('srvice worker resolved great!');
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
-
-}

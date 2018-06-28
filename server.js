@@ -8,6 +8,8 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/main.html'));
 });
 
+//set static files
+app.use(express.static(__dirname + '/public'));
 app.listen(8000, function() {
   console.log('Example app listening on port 8000!');
 });

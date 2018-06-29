@@ -5,7 +5,6 @@ let final = document.getElementById("final");
 let convert = document.getElementById("convert");
 
 
-
 convert.onclick = (event) => {
     let key = `${from.value}_${to.value}`;
     fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${key}&compact=ultra`)
@@ -14,6 +13,7 @@ convert.onclick = (event) => {
         final.value = response[key] * currency.value;
     });
 };
+
 fetch('https://free.currencyconverterapi.com/api/v5/currencies')
 .then((response) => response.json()) // Transform the data into json
 .then((response) => {
@@ -23,6 +23,24 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
         from.add(fromOption);
         to.add(toOption);
     });
+
+//indexedb
+const dbPromise = idb.open('currency-converter-db', 1, (upgradeDb) => {
+    const currencyStore = upgradeDb.createObjectStore('currency-conversion');
+    
+    Object.entries(response.results).forEach(([key, value]) => {
+        currencyStore.put(`${value.currencyName} (${value.currencySymbol})`, key);
+        final.value = response[key] * currency.value;
+    });
+
+  });
+
+
+
+
+
+
+
 });
 
 //register service worker
@@ -31,12 +49,12 @@ if('serviceWorker' in navigator) {
              .register('/sw.js')
              .then((cache) => {
               console.log("Service Worker Registered"); 
-             });
+            });
   }
 
-//indexedb
-const dbPromise = idb.open('currency-converter-db', 1, upgradeDb => {
-    upgradeDb.createObjectStore('currency-conversion',{keyPath: 'id'});
-  });
+
+
+
+
 
 

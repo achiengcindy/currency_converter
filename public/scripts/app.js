@@ -4,6 +4,8 @@ let to = document.getElementById("to");
 let final = document.getElementById("final");
 let convert = document.getElementById("convert");
 
+
+
 convert.onclick = (event) => {
     let key = `${from.value}_${to.value}`;
     fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${key}&compact=ultra`)
@@ -22,4 +24,19 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
         to.add(toOption);
     });
 });
+
+//register service worker
+if('serviceWorker' in navigator) {
+    navigator.serviceWorker
+             .register('/sw.js')
+             .then((cache) => {
+              console.log("Service Worker Registered"); 
+             });
+  }
+
+//indexedb
+const dbPromise = idb.open('currency-converter-db', 1, upgradeDb => {
+    upgradeDb.createObjectStore('currency-conversion',{keyPath: 'id'});
+  });
+
 

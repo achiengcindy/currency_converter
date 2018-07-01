@@ -6,9 +6,9 @@ self.addEventListener('install', event => {
       return cache.addAll([
         './',
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
-        '/currency_converter/scripts/app.js',
-        '/currency_converter//css/styles.css',
-        //'/currency_converter/imgs/favicon.ico',
+        './scripts/app.js',
+        './css/styles.css',
+        './imgs/favicon.ico',
         'https://code.jquery.com/jquery-3.2.1.slim.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',

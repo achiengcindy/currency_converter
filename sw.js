@@ -8,13 +8,13 @@ self.addEventListener('install', event => {
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
         '/currency_converter/scripts/app.js',
         '/currency_converter//css/styles.css',
-        '/currency_converter/imgs/favicon.ico',
+        //'/currency_converter/imgs/favicon.ico',
         'https://code.jquery.com/jquery-3.2.1.slim.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',
         'https://cdn.jsdelivr.net/npm/idb@2.1.3/lib/idb.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css',
-        'https://free.currencyconverterapi.com/api/v5/currencies',
+        //'https://free.currencyconverterapi.com/api/v5/currencies',
       ]);
     })
   );

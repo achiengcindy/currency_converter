@@ -4,7 +4,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(currencyCacheName).then(cache => {
       return cache.addAll([
-        '/currency_converter/',
+        './',
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
         '/currency_converter/scripts/app.js',
         '/currency_converter//css/styles.css',

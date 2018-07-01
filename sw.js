@@ -3,6 +3,7 @@ const currencyCacheName = 'currency-static-v3';
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(currencyCacheName).then(cache => {
+      cache.add('https://free.currencyconverterapi.com/api/v5/currencies');
       return cache.addAll([
         '/currency_converter/main.html',
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
@@ -14,7 +15,6 @@ self.addEventListener('install', event => {
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',
         'https://cdn.jsdelivr.net/npm/idb@2.1.3/lib/idb.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css',
-        'https://free.currencyconverterapi.com/api/v5/currencies',
       ]);
     })
   );

@@ -62,24 +62,25 @@ const currencyRatesStore = {
 
 convert.onclick = (event) => {
     let key = `${from.value}_${to.value}`;
+    let currency_value = (+currency.value || 0);
     fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${key}&compact=ultra`)
         .then(response => {
             return response.json(); // Transform the data into json
         })
         .then(response => {
-            final.value = response[key] * currency.value;
+            final.value = response[key] * currency_value;
         }).catch(error => {
             if (confirm(`Error loading conversion rate, do you want to use the pre-cached rates?`))
                 Promise.all([currencyRatesStore.get(from.value), currencyRatesStore.get(to.value)]).then(([from_conversion_rate, to_conversion_rate]) => {
                     if (!from_conversion_rate) {
-                        alert(`${from.text} not yet cahed in IndexDB FOR offline use... `);
+                        alert(`${from.options[from.selectedIndex].text} not yet cahed in IndexDB FOR offline use... `);
                         return;
                     }
                     if (!to_conversion_rate) {
-                        alert(`${to.text} not yet cahed in IndexDB FOR offline use... `);
+                        alert(`${to.options[to.selectedIndex].text} not yet cahed in IndexDB FOR offline use... `);
                         return;
                     }
-                    final.value = (+from_conversion_rate / +to_conversion_rate) * currency.value;
+                    final.value = (+from_conversion_rate / +to_conversion_rate) * currency_value;
                 });
         });
 };
@@ -99,12 +100,12 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
         return response;
     })
     .then(response => {
-        var convertionRates = [];
+        const convertionRates = [];
 
         //https://www.bennadel.com/blog/3201-exploring-recursive-promises-in-javascript.htm
-        var promise = Object.entries(response.results).reduce(
+        let promise = Object.entries(response.results).reduce(
             function reducer(promiseChain, currency) {
-                var nextLinkInChain = promiseChain.then(function () {
+                var nextLinkInChain = promiseChain.then( () => {
                     [key, value] = currency;
                     let key_USD = `${key}_USD`;
                     return fetch(`https://free.currencyconverterapi.com/api/v5/convert?q=${key_USD}&compact=ultra`)
@@ -134,7 +135,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
             Promise.resolve() // Start the promise chain.
         );
 
-        return promise.then(function () {
+        return promise.then(() => {
             return convertionRates;
         });
     })

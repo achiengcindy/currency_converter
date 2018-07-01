@@ -154,7 +154,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies')
 
 //register service worker
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js' , { scope: '.' }).then(() => {
+    navigator.serviceWorker.register('/sw.js').then(() => {
         console.log("Service Worker Registered");
     }).catch(() => {
         console.log("Oooops! Service Worker Registered Failed");

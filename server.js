@@ -9,7 +9,7 @@ app.get('/', function(req, res) {
 });
 
 //set static files
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname));
 
 //start server
 app.listen(8000, function() {
